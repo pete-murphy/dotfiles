@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
  Plug 'mhartington/oceanic-next'
 " Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
- Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
  Plug 'eagletmt/neco-ghc', {'for': 'haskell'}
  Plug 'vim-airline/vim-airline'
  Plug 'w0rp/ale'
@@ -55,3 +55,4 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 noremap <Leader>d :ALEFix<CR>
+
