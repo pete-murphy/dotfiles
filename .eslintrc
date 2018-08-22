@@ -13,8 +13,7 @@
     }
   },
   "extends": [
-    "prettier",
-    "react-app"
+    "prettier"
   ],
   "rules": {
     "prettier/prettier": [
