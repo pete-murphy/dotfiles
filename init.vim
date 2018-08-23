@@ -55,6 +55,8 @@ filetype plugin indent on
 colorscheme OceanicNext
 let g:airline_theme='oceanicnext'
 
+highlight Comment cterm=italic
+
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
