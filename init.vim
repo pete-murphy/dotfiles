@@ -32,6 +32,9 @@ let g:ale_linters = { 'haskell': ['stack-ghc'] }
 
 autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
 
+" Just for screen-sharing
+let g:hindent_line_length = 55
+
 if (has("termguicolors"))
  set termguicolors
 endif
