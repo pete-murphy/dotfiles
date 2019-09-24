@@ -1,0 +1,9 @@
+[user]
+  name = Peter Murphy
+  email = pete@simspace.com
+[core]
+  editor = code --wait --reuse-window
+[diff]
+  tool = default-difftool
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE

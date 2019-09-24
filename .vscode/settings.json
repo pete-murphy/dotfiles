@@ -1,0 +1,41 @@
+{
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.fontFamily": "\"SF Mono\"",
+  "editor.fontSize": 13,
+  "editor.cursorBlinking": "solid",
+  "window.zoomLevel": 0,
+  "editor.minimap.enabled": false,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "zenMode.centerLayout": false,
+  "editor.lightbulb.enabled": false,
+  "zenMode.hideLineNumbers": false,
+  "workbench.colorTheme": "Oceanic Next",
+  "[haskell]": {
+    "editor.defaultFormatter": "sergey-kintsel.haskell-formatter-vscode-extension"
+  },
+  "editor.formatOnSave": true,
+  "editor.fontWeight": "600",
+  "terminal.integrated.fontWeight": "600",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "eslint.autoFixOnSave": true,
+  "[scss]": {
+    "editor.formatOnSave": false
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always"
+}
