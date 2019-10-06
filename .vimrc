@@ -11,6 +11,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'wellle/targets.vim'
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-unimpaired'
+ Plug '/usr/local/opt/fzf'
+ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
@@ -64,9 +66,13 @@ set belloff=all
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" Quick-save
+nmap <Leader>w :w<CR>
 noremap <Leader>d :ALEDetail<CR>
 noremap <Leader>f :ALEFix<CR>
 noremap <Leader>x :Vexplore<CR>
+noremap <Leader>o :Files<CR>
+noremap <Leader>b :Buffer<CR>
 
 " set signcolumn=yes
 " hi SignColumn ctermbg=black
@@ -89,9 +95,6 @@ nnoremap Y y$
 map H ^
 map L $
 
-" Quick-save
-nmap <leader>w :w<CR>
-
 " No arrow keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -109,5 +112,5 @@ hi SpellCap cterm=italic
 set tags=tags;/
 
 " Need this to get zsh vi mode to not change cursor in vim
-autocmd VimEnter * silent exec "! echo -ne '\e[2 q'"
-autocmd VimLeave * silent exec "! echo -ne '\e[6 q'" 
+" autocmd VimEnter * silent exec "! echo -ne '\e[2 q'"
+" autocmd VimLeave * silent exec "! echo -ne '\e[6 q'" 
