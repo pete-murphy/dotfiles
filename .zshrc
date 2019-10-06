@@ -1,6 +1,9 @@
 # For k8 scripts
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin/
 
+# Tmux temp directory (recoverable sessions)
+TMUX_TMPDIR=$HOME/tmp/tmux
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -10,36 +13,14 @@ unsetopt beep
 # Vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
 # End of lines configured by zsh-newuser-install
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-# function zle-line-init zle-line-finish {
-#     echo -ne "\e[5 q"
-#     zle reset-prompt
-# }
-# zle -N zle-line-init
-# zle -N zle-line-finish
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -88,7 +69,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # Autocomplete
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -101,9 +82,9 @@ alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
 alias theme_light="base16_tomorrow"
 alias theme_dark="base16_oceanicnext"
-alias l='ls -lah'          # Long view, show hidden
-alias la='ls -AF'          # Compact view, show hidden
-alias ll='ls -lFh'         # Long view, no hidden
+alias l="ls -lah"          # Long view, show hidden
+alias la="ls -AF"          # Compact view, show hidden
+alias ll="ls -lFh"         # Long view, no hidden
 
 # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc.
 setopt extended_glob
@@ -111,5 +92,5 @@ setopt extended_glob
 # Syntax highlighting in less? (Not working)
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=" -R "
-alias less='less -m -N -g -i -J --underline-special --SILENT'
-alias more='less'
+alias less="less -m -N -g -i -J --underline-special --SILENT"
+alias more="less"
