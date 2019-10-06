@@ -4,7 +4,8 @@
   "editor.fontFamily": "\"SF Mono\"",
   "editor.fontSize": 13,
   "editor.cursorBlinking": "solid",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
+  "workbench.tree.indent": 16,
   "editor.minimap.enabled": false,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -18,24 +19,28 @@
   "editor.formatOnSave": true,
   "editor.fontWeight": "600",
   "terminal.integrated.fontWeight": "600",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
-  ],
-  "eslint.autoFixOnSave": true,
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   {
+  //     "language": "typescript",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language": "typescriptreact",
+  //     "autoFix": true
+  //   }
+  // ],
+  // "eslint.autoFixOnSave": true,
   "[scss]": {
     "editor.formatOnSave": false
   },
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none"
 }
