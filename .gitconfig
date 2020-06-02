@@ -1,9 +1,16 @@
 [user]
-  name = Peter Murphy
-  email = pete@simspace.com
+	name = Peter Murphy
+	email = pete@simspace.com
 [core]
   editor = code --wait --reuse-window
+	excludesfile = /Users/peter/.gitignore_global
 [diff]
   tool = default-difftool
 [difftool "default-difftool"]
   cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

@@ -1,11 +1,12 @@
 call plug#begin('~/.vim/plugged')
+ Plug 'vim-scripts/ReplaceWithRegister'
  Plug 'kana/vim-textobj-user'
  Plug 'Julian/vim-textobj-variable-segment'
  Plug 'vim-airline/vim-airline'
  Plug 'w0rp/ale'
  Plug 'vim-airline/vim-airline-themes'
- Plug 'nbouscal/vim-stylish-haskell'
- Plug 'alx741/vim-hindent'
+" Plug 'nbouscal/vim-stylish-haskell'
+" Plug 'alx741/vim-hindent'
  Plug 'chriskempson/base16-vim'
  Plug 'tpope/vim-repeat'
  Plug 'wellle/targets.vim'
@@ -13,12 +14,32 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-unimpaired'
  Plug '/usr/local/opt/fzf'
  Plug 'junegunn/fzf.vim'
+ Plug 'prabirshrestha/async.vim'
+ Plug 'prabirshrestha/vim-lsp'
+ Plug 'preservim/nerdtree'
+ Plug 'junegunn/goyo.vim'
+ Plug 'godlygeek/tabular'
+ Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
-let g:ale_linters = { "haskell": ["stack-ghc", "hlint"] }
-let g:ale_fixers = { "javascript": ["eslint"], "html": ["prettier"] }
+let g:ale_linters_explicit = 1
+" let g:ale_linters = { 'haskell': ['hlint'] }
+let g:ale_fixers = { 'javascript': ["eslint"], 'html': ["prettier"] }
+" let g:ale_sign_column_always = 1
+" let g:haskell_hlint_executable
+
+
+" ghcide
+" au User lsp_setup call lsp#register_server({
+"     \ 'name': 'ghcide',
+"     \ 'cmd': {server_info->['/Users/peter/.local/bin/ghcide', '--lsp']},
+"     \ 'whitelist': ['haskell'],
+"     \ })
 
 syntax enable
 filetype on
@@ -34,11 +55,11 @@ set timeoutlen=1000 ttimeoutlen=0
 set background=light
 set expandtab
 set number
-set relativenumber
+" set relativenumber
 set autoindent
 set tabstop=2
 set shiftwidth=2
-set nohlsearch
+set hlsearch
 set splitright
 set wildmenu
 set wildmode=longest:full,full
@@ -55,6 +76,9 @@ endif
 " Comments in italics
 highlight Comment cterm=italic
 
+" Gutter color
+highlight LineNr ctermbg=Black
+
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
@@ -68,11 +92,17 @@ let mapleader=" "
 
 " Quick-save
 nmap <Leader>w :w<CR>
+
 noremap <Leader>d :ALEDetail<CR>
 noremap <Leader>f :ALEFix<CR>
-noremap <Leader>x :Vexplore<CR>
-noremap <Leader>o :Files<CR>
+" noremap <Leader>x :Vexplore<CR>
+" noremap <Leader>o :Files<CR>
+noremap <Leader>o :NERDTreeToggle<CR>
 noremap <Leader>b :Buffer<CR>
+noremap <Leader>p :Rg<CR>
+noremap [[ :bp<CR>
+noremap ]] :bn<CR>
+map <Leader><Leader>hl :!hlint %<CR>
 
 " set signcolumn=yes
 " hi SignColumn ctermbg=black
@@ -81,12 +111,11 @@ set list
 set listchars=nbsp:¬,tab:>-,precedes:<,extends:>,trail:·
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-set tags=./tags
+map , <C-W>w
+map <Leader>j <C-W>j
+map <Leader>k <C-W>k
+map <Leader>h <C-W>h
+map <Leader>l <C-W>l
 
 " Yank to end of line
 nnoremap Y y$
@@ -98,6 +127,8 @@ map L $
 " No arrow keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -111,6 +142,9 @@ hi SpellCap cterm=italic
 
 set tags=tags;/
 
-" Need this to get zsh vi mode to not change cursor in vim
-" autocmd VimEnter * silent exec "! echo -ne '\e[2 q'"
-" autocmd VimLeave * silent exec "! echo -ne '\e[6 q'" 
+set foldmethod=indent
+set foldlevelstart=99
+
+" Clear recent highlight (by clearing search register)
+nnoremap <Leader><esc> :let @/=""<return>
+

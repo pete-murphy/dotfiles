@@ -1,10 +1,11 @@
 {
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
-  "editor.fontFamily": "\"SF Mono\"",
-  "editor.fontSize": 13,
+  "editor.fontFamily": "SF Mono",
+  "editor.fontSize": 14,
+  "terminal.integrated.fontSize": 13,
   "editor.cursorBlinking": "solid",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "workbench.tree.indent": 16,
   "editor.minimap.enabled": false,
   "terminal.integrated.shell.osx": "/bin/zsh",
@@ -12,35 +13,56 @@
   "zenMode.centerLayout": false,
   "editor.lightbulb.enabled": false,
   "zenMode.hideLineNumbers": false,
-  "workbench.colorTheme": "Oceanic Next",
+  "editor.fontLigatures": true,
   "[haskell]": {
-    "editor.defaultFormatter": "sergey-kintsel.haskell-formatter-vscode-extension"
+    "editor.defaultFormatter": "sjurmillidahl.ormolu-vscode",
+    "editor.formatOnSave": true
   },
   "editor.formatOnSave": true,
-  "editor.fontWeight": "600",
-  "terminal.integrated.fontWeight": "600",
-  // "[javascript]": {
-  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // },
-  // "eslint.validate": [
-  //   "javascript",
-  //   "javascriptreact",
-  //   {
-  //     "language": "typescript",
-  //     "autoFix": true
-  //   },
-  //   {
-  //     "language": "typescriptreact",
-  //     "autoFix": true
-  //   }
-  // ],
-  // "eslint.autoFixOnSave": true,
+  "editor.fontWeight": "normal",
+  "terminal.integrated.fontWeight": "normal",
+  "vim.foldfix": true,
+  "vim.replaceWithRegister": true,
+  "vim.easymotion": true,
+  "vim.leader": " ",
+  "vim.easymotionMarkerFontFamily": "SF Mono",
+  "vim.easymotionMarkerBackgroundColor": "tomato",
+  "vim.easymotionMarkerForegroundColorOneChar": "white",
+  "vim.easymotionMarkerFontWeight": "bold",
+  "vim.easymotionMarkerHeight": 20,
+  "vim.easymotionMarkerWidthPerChar": 12,
   "[scss]": {
     "editor.formatOnSave": false
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.visible": false,
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.tslint": true
+  // },
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.startupEditor": "none"
+  "zenMode.hideStatusBar": false,
+  "prettier.printWidth": 80,
+  "gitlens.gitCommands.closeOnFocusOut": true,
+  "gitlens.codeLens.enabled": false,
+  "workbench.colorTheme": "Oceanic Next",
+  "languageServerHaskell.formattingProvider": "ormolu",
+  "languageServerHaskell.hieVariant": "haskell-language-server",
+  "workbench.sideBar.location": "left"
 }

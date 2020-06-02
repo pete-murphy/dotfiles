@@ -1,5 +1,4 @@
-# For k8 scripts
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin/
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin/:$HOME/Code/ci/deploy:$HOME/.emacs.d/bin/
 
 # Tmux temp directory (recoverable sessions)
 TMUX_TMPDIR=$HOME/tmp/tmux
@@ -37,10 +36,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # Point docker client at Minikube virtual Linux server
-if minikube status 2>&1 >/dev/null
-then
-    eval $(minikube docker-env)
-fi
+# if minikube status 2>&1 >/dev/null
+# then
+#     eval $(minikube docker-env)
+# fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -85,6 +84,8 @@ alias theme_dark="base16_oceanicnext"
 alias l="ls -lah"          # Long view, show hidden
 alias la="ls -AF"          # Compact view, show hidden
 alias ll="ls -lFh"         # Long view, no hidden
+alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias httpserver="python -m SimpleHTTPServer"
 
 # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc.
 setopt extended_glob
@@ -94,3 +95,23 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 alias less="less -m -N -g -i -J --underline-special --SILENT"
 alias more="less"
+
+# Screen recording using ffmpeg
+alias srlist='ffmpeg -f avfoundation -list_devices true -i ""'
+srstart() {
+  local t="$(date +%Y-%m-%d-%H%M%S)"
+  ffmpeg -f avfoundation -r 16 -i "$1" -pix_fmt yuv420p "$HOME/Desktop/screen-rec-$t.mov"
+}
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then . ${HOME}/.nix-profile/etc/profile.d/nix.sh; fi
+
+# Syntax highlighting
+source ${HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
