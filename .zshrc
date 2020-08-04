@@ -76,6 +76,7 @@ load-nvmrc
 . /usr/local/etc/profile.d/z.sh
 
 # Aliases
+alias vim="nvim"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
