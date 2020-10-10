@@ -5,7 +5,7 @@
   "editor.fontSize": 14,
   "terminal.integrated.fontSize": 13,
   "editor.cursorBlinking": "solid",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "workbench.tree.indent": 16,
   "editor.minimap.enabled": false,
   "terminal.integrated.shell.osx": "/bin/zsh",
@@ -16,7 +16,10 @@
   "editor.fontLigatures": true,
   "[haskell]": {
     "editor.defaultFormatter": "sjurmillidahl.ormolu-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
   },
   "editor.formatOnSave": true,
   "editor.fontWeight": "normal",
@@ -25,11 +28,9 @@
   "vim.replaceWithRegister": true,
   "vim.easymotion": true,
   "vim.leader": " ",
-  "vim.easymotionMarkerFontFamily": "SF Mono",
   "vim.easymotionMarkerBackgroundColor": "tomato",
   "vim.easymotionMarkerForegroundColorOneChar": "white",
   "vim.easymotionMarkerFontWeight": "bold",
-  "vim.easymotionMarkerHeight": 20,
   "vim.easymotionMarkerWidthPerChar": 12,
   "[scss]": {
     "editor.formatOnSave": false
@@ -37,9 +38,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "workbench.startupEditor": "none",
   "workbench.activityBar.visible": false,
-  // "editor.codeActionsOnSave": {
-  //   "source.fixAll.tslint": true
-  // },
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "files.exclude": {
@@ -62,8 +60,9 @@
   "gitlens.gitCommands.closeOnFocusOut": true,
   "gitlens.codeLens.enabled": false,
   "workbench.colorTheme": "Gruvbox Dark Hard",
-  "languageServerHaskell.formattingProvider": "ormolu",
-  "languageServerHaskell.hieVariant": "haskell-language-server",
   "workbench.sideBar.location": "left",
-  "editor.acceptSuggestionOnCommitCharacter": false
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "haskell.hlintOn": false,
+  "haskell.trace.server": "messages",
+  "workbench.editor.enablePreview": false
 }

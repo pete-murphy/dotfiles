@@ -23,10 +23,12 @@ call plug#begin('~/.vim/plugged')
  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'tpope/vim-fugitive'
+ Plug 'neovimhaskell/haskell-vim'
 " Plug 'autozimu/LanguageClient-neovim', {
 "    \ 'branch': 'next',
 "    \ 'do': 'bash install.sh',
 "    \ }
+ Plug 'purescript-contrib/purescript-vim'
 call plug#end()
 
 let g:ale_linters_explicit = 1
@@ -74,12 +76,6 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-" Comments in italics
-highlight Comment cterm=italic
-
-" Gutter color
-highlight LineNr ctermbg=Black
-
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
@@ -105,6 +101,9 @@ map <Leader>] :tabnext<CR>
 " map <Leader><Leader>hl :!hlint %<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-p> :Rg<CR>
+
+" Haskell
+nnoremap <Leader>le ggO{-# LANGUAGE  #-}<esc>3hi
 
 set list
 set listchars=nbsp:¬,tab:>-,precedes:<,extends:>,trail:·
@@ -147,6 +146,37 @@ set foldlevelstart=99
 " Clear recent highlight (by clearing search register)
 nnoremap <Leader><esc> :let @/=""<return>
 
+" Comments in italics
+highlight Comment cterm=italic
+
+" Gutter color
+highlight LineNr ctermbg=Black
+
+" Highlight in Visual mode
+highlight Visual cterm=reverse ctermbg=NONE
+
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
+" Use Markdown syntax for Vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " *********************************************
 " CoC stuff ***********************************
@@ -308,3 +338,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Don't remap tab for vimwiki
 let g:vimwiki_table_mappings = 0
+
+" Open NERDTree if no files are specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close editor if only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
